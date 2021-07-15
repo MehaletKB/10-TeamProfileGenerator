@@ -1,16 +1,15 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-const Employee = require("./utils/Employee");
 const Intern = require("./utils/Intern");
 const Engineer = require("./utils/Engineer");
 const Manager = require("./utils/Manager");
-// const generateHTML = require('./generateHTML.js')
+const generateHTML = require('./generateHTML.js')
 
 const teamArr = [];
 
 function init() {
-  function buildManager() {
+  function addManager() {
     inquirer
       .prompt([
         {
@@ -151,17 +150,23 @@ function init() {
     })
   }
 
-  function createTeam() {
-    fs.writeFile();
-  }
+  function writeToFile(data) {
+    fs.writeFile("./index.html", data, (err) => {
+      err?console.error(err):console.log("Your team has been created!")
+    })
+  };
 
-  // function writeToFile(fileName, data) {
-  //     fs.writeFile(fileName, data, (err) => {
-  //         err?console.error(err):console.log("Thank you!")
-  //     })
-  // }
-
-  buildManager();
+  addManager()
+  .then(addEmployee)
+  .then(teamArr => {
+    generateHTML(teamArr);
+  })
+  .then(createPage => {
+    writeToFile(createPage);
+  })
+  .catch(err => {
+    console.log(err);
+  })
 }
 
 init();
