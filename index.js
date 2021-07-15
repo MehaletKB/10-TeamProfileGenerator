@@ -28,7 +28,7 @@ const questions = [
         type: "checkbox",
         name: "add_employee",
         message: "Please select which employee you want to add:",
-        choices: [ "Engineer", "Intern"],
+        choices: ["Engineer", "Intern"],
     },
 
 
@@ -57,6 +57,7 @@ const questions = [
         name: "add_employee",
         message: "Please select which employee you want to add:",
         choices: ["Engineer", "Intern"],
+        // when(answers)
     },
 
 
@@ -93,6 +94,10 @@ function init() {
     inquirer
     .prompt(questions)
     .then((answers) => {
+        // if(data.add_employee === "Engineer"){
+
+        // }
+
         let inputInfo = generateHTML(answers);
 
         writeToFile("index.html", inputInfo)
