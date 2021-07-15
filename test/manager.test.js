@@ -1,4 +1,4 @@
-const Employee = require("../utils/employee")
+const Employee = require("../utils/Employee")
 
 describe("Initialization", () => {
     it("should be instance of Employee", () => {
