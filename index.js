@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+
 const Employee = require("./utils/Employee");
 const Intern = require("./utils/Intern");
 const Engineer = require("./utils/Engineer");
@@ -15,22 +16,22 @@ function init() {
         {
           type: "input",
           name: "managerName",
-          message: "Manager name:",
+          message: "Who is the team manager?",
         },
         {
           type: "input",
           name: "managerId",
-          message: "Manager employee ID:",
+          message: "Please enter the manager's employee ID:",
         },
         {
           type: "input",
           name: "managerEmail",
-          message: "Manager email address:",
+          message: "Please enter the manager's email address:",
         },
         {
           type: "input",
           name: "managerOfficeNum",
-          message: "Manager's office number:",
+          message: "Please enter the manager's office number:",
         },
       ])
       .then((answers) => {
@@ -42,60 +43,30 @@ function init() {
         );
 
         teamArr.push(manager);
+        console.log(manager);
 
-        buildTeam();
+        addEmployee();
 
       });
-  }
+  };
 
-  const questions = [
-
-    {
-      type: "checkbox",
-      name: "addEmployee",
-      message: "Please select which employee you want to add:",
-      choices: ["Engineer", "Intern"],
-    },
-
-    {
-      type: "input",
-      name: "internName",
-      message: "Intern name:",
-    },
-    {
-      type: "input",
-      name: "internId",
-      message: "Intern employee ID",
-    },
-    {
-      type: "input",
-      name: "internEmail",
-      message: "Intern email address:",
-    },
-    {
-      type: "input",
-      name: "internSchool",
-      message: "Intern school:",
-    },
-  ];
-
-  function buildTeam() {
+  function addEmployee() {
     inquirer
       .prompt([
         {
           type: "list",
           name: "addEmployee",
-          message: "Please select which employee you want to add:",
+          message: "Please select which employee to add or create your team:",
           choices: ["Engineer", "Intern", "Create Team"],
         },
       ])
       .then((answers) => {
         switch (answers.addEmployee) {
           case "Engineer":
-            buildEngineer();
+            addEngineer();
             break;
           case "Intern":
-            buildIntern();
+            addIntern();
             break;
           default:
             createTeam();
@@ -103,28 +74,28 @@ function init() {
       });
   }
 
-  function buildEngineer() {
+  function addEngineer() {
     inquirer
     .prompt([
         {
             type: "input",
             name: "engineerName",
-            message: "Engineer name:",
+            message: "What's the engineer's name?",
           },
           {
             type: "input",
             name: "engineerId",
-            message: "Engineer employee ID",
+            message: "Please enter the engineer's employee ID:",
           },
           {
             type: "input",
             name: "engineerEmail",
-            message: "Engineer email address:",
+            message: "Please enter the engineer's address:",
           },
           {
             type: "input",
             name: "engineerGithub",
-            message: "Engineer Github:",
+            message: "Please enter the engineer's Github username:",
           }
     ])
     .then((answers) => {
@@ -132,16 +103,53 @@ function init() {
           answers.engineerName,
           answers.engineerId,
           answers.engineerEmail,
-          answers.engineerOfficeNum
+          answers.engineerGithub
         );
 
         teamArr.push(engineer);
 
-        buildTeam();
+        addEmployee();
 
       });
   }
 
+  function addIntern() {
+    inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "internName",
+        message: "What's the intern's name?",
+      },
+      {
+        type: "input",
+        name: "internId",
+        message: "Please enter the intern's employee ID",
+      },
+      {
+        type: "input",
+        name: "internEmail",
+        message: "Please enter the intern's email address:",
+      },
+      {
+        type: "input",
+        name: "internSchool",
+        message: "Please enter the intern's school:",
+      },
+    ])
+    .then((answers) => {
+      const intern = new Intern(
+        answers.internName,
+        answers.internId,
+        answers.internEmail,
+        answers.internSchool
+      );
+
+      teamArr.push(intern);
+
+      addEmployee()
+    })
+  }
 
   function createTeam() {
     fs.writeFile();
