@@ -20,7 +20,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "manager_office",
+        name: "manager_officeNum",
         message: "Manager's office number:"
     },
     {
