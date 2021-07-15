@@ -14,7 +14,6 @@ function createManagerCard(manager) {
     `;
 }
 
-
 function createEngineerCard(engineer) {
     return `
     <div class="w-25 ml-3 mr-3 border shadow" style="max-width: 18rem;">
@@ -47,9 +46,9 @@ function createInternCard(intern) {
     `;
 }
 
-generateHTML = (data) => {
-    htmlArr = [];
+htmlArr = [];
 
+function generateHTML(data) {
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
         const role = employee.getRole();
@@ -63,12 +62,46 @@ generateHTML = (data) => {
             const engineerCard = createEngineerCard(employee)
             htmlArr.push(engineerCard)
         };
-
+        
         if (role === "Intern") {
-            const internCard = createEngineerCard(employee)
+            const internCard = createInternCard(employee)
             htmlArr.push(internCard)
         };
     }
+    
+    const teamCards = htmlArr.join("")
+    console.log (teamCards)
+
+    return `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <title>Team Profiles</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid text-white bg-primary">
+        <div class="container">
+            <h1 class="display-4 text-center">My Team</h1>
+        </div>
+    </div>
+
+    <div class="d-flex p-2 m-3 justify-content-center">
+        ${teamCards}
+    </div>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</html>
+    
+    `
 }
 
-const teamCards = htmlArr.join("")
+
+module.exports = generateHTML;

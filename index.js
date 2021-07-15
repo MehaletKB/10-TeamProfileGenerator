@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const Intern = require("./utils/Intern");
 const Engineer = require("./utils/Engineer");
 const Manager = require("./utils/Manager");
-// const generateHTML = require('./generateHTML.js')
+const generateHTML = require('./generateHTML.js')
 
 const teamArr = [];
 
@@ -151,18 +151,15 @@ function init() {
     })
   }
 
-  createTeam(team) {
-    writeToFile(),
-  }
+  function createTeam() {
+    const htmlPage = generateHTML(teamArr)
 
-  function writeToFile(data) {
-    fs.writeFile("./index.html", data, (err) => {
+    fs.writeFile("./team.html", htmlPage, (err) => {
       err?console.error(err):console.log("Your team has been created!")
+      
     })
   };
-
   addManager()
 
 }
-
-init();
+init()
