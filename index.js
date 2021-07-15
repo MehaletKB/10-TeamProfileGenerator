@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const Intern = require("./utils/Intern");
 const Engineer = require("./utils/Engineer");
 const Manager = require("./utils/Manager");
-const generateHTML = require('./generateHTML.js')
+// const generateHTML = require('./generateHTML.js')
 
 const teamArr = [];
 
@@ -42,7 +42,6 @@ function init() {
         );
 
         teamArr.push(manager);
-        console.log(manager);
 
         addEmployee();
 
@@ -146,8 +145,14 @@ function init() {
 
       teamArr.push(intern);
 
+      console.log(teamArr)
+
       addEmployee()
     })
+  }
+
+  createTeam(team) {
+    writeToFile(),
   }
 
   function writeToFile(data) {
@@ -157,16 +162,7 @@ function init() {
   };
 
   addManager()
-  .then(addEmployee)
-  .then(teamArr => {
-    generateHTML(teamArr);
-  })
-  .then(createPage => {
-    writeToFile(createPage);
-  })
-  .catch(err => {
-    console.log(err);
-  })
+
 }
 
 init();
