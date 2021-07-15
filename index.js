@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateHTML = require('./generateHTML.js')
 
 
 const questions = [
@@ -55,7 +56,7 @@ const questions = [
         type: "checkbox",
         name: "add_employee",
         message: "Please select which employee you want to add:",
-        choices: [ "Engineer", "Intern"],
+        choices: ["Engineer", "Intern"],
     },
 
 
@@ -82,6 +83,20 @@ const questions = [
 ];
 
 
-function writeToFile(fileName, data){
-    fs.writeFile
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        err?console.error(err):console.log("Thank you!")
+    })
 }
+
+function init() {
+    inquirer
+    .prompt(questions)
+    .then((answers) => {
+        let inputInfo = generateHTML(answers);
+
+        writeToFile("index.html", inputInfo)
+    })
+}
+
+init()
