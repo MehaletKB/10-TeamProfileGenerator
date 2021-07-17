@@ -7,7 +7,7 @@ function createManagerCard(manager) {
         </div>
         <div class="card-body">
             <p class="card-text">${manager.id}</p>
-            <p class="card-text">${manager.email}</p>
+            <p><a class="card-text" href="mailto:${manager.email}">${manager.email}</a></p>
             <p class="card-text">${manager.officeNum}</p>
         </div>
     </div>
@@ -39,7 +39,7 @@ function createInternCard(intern) {
         </div>
         <div class="card-body">
             <p class="card-text">${intern.id}</p>
-            <p class="card-text">${intern.email}</p>
+            <p><a class="card-text" href="mailto:${intern.email}">${intern.email}</a></p>
             <p class="card-text">${intern.school}</p>
         </div>
     </div>

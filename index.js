@@ -121,7 +121,7 @@ function init() {
       {
         type: "input",
         name: "internId",
-        message: "Please enter the intern's employee ID",
+        message: "Please enter the intern's employee ID:",
       },
       {
         type: "input",
@@ -152,7 +152,7 @@ function init() {
     const htmlPage = generateHTML(teamArr)
 
     fs.writeFile("./index.html", htmlPage, (err) => {
-      err?console.error(err):console.log("Your team has been created!")
+      err?console.error(err):console.log("Your team has been created! Please open your index.html file in a browser.")
       
     })
   };

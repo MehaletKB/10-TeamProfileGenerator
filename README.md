@@ -1,30 +1,32 @@
-<!-- # 10-TeamProfileGenerator
-This project is covered under !['License:Meeny'](https://img.shields.io/badge/License-Meeny-yellow)
+# 10-TeamProfileGenerator
+![''](https://img.shields.io/tokei/lines/github/MehaletKB/10-TeamProfileGenerator?style=plastic) ![''](https://img.shields.io/github/last-commit/MehaletKB/10-TeamProfileGenerator)
 
-  # Title: README Generator
+  # Title: Team Profile Generator
 
   ## Table of Contents:
   * [Description](#description)
+  * [Walk-through](#walk-through)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Contribution](#contribution)
-  * [Testing](#tests)
-  * [Contact](#questions)
+  * [Testing](#testing)
+  * [Contact](#contact)
 
   ## Description: 
-  Generate a README file from the terminal with node.js and inquirer dependency
+  This application generates a webpage displaying employee profiles based on user input
+  ![Screenshot](./assets/10-TeamProfileGenerator-img.png)
+
+  ## Walk-through:
+  https://www.dropbox.com/s/r1bfmi51n53lvag/10-TeamProfileGenerator.mp4?dl=0
 
   ## Installation:
-  must insall node.js
+  Must install node.js, inquirer and jest.
 
   ## Usage: 
-  to create README files
-
-  ## Contribution Guidelines: 
-  make it better or go home
+  User will use node.js in the terminal to start question prompt. Once all questions are answered, user will select the "Create Team" to generate an HTML file with entered data.
 
   ## Testing: 
-  type node index.js a million times
+  Testing is done using Jest
 
-  ## For questions please contact: 
-  tatybcoding@gmail.com -->
+  ## Contact: 
+  Email: tatybcoding@gmail.com    
+  Github: MehaletKB
