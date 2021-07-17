@@ -15,7 +15,7 @@ function init() {
         {
           type: "input",
           name: "managerName",
-          message: "Who is the team manager?",
+          message: "Please enter the manager's name:",
         },
         {
           type: "input",
@@ -44,7 +44,6 @@ function init() {
         teamArr.push(manager);
 
         addEmployee();
-
       });
   };
 
@@ -54,7 +53,7 @@ function init() {
         {
           type: "list",
           name: "addEmployee",
-          message: "Please select which employee to add or create your team:",
+          message: "Please select which employee to add next or create your team:",
           choices: ["Engineer", "Intern", "Create Team"],
         },
       ])
@@ -70,7 +69,7 @@ function init() {
             createTeam();
         }
       });
-  }
+  };
 
   function addEngineer() {
     inquirer
@@ -78,7 +77,7 @@ function init() {
         {
             type: "input",
             name: "engineerName",
-            message: "What's the engineer's name?",
+            message: "Please enter the engineer's name:",
           },
           {
             type: "input",
@@ -117,7 +116,7 @@ function init() {
       {
         type: "input",
         name: "internName",
-        message: "What's the intern's name?",
+        message: "Please enter the intern's name:",
       },
       {
         type: "input",
@@ -145,8 +144,6 @@ function init() {
 
       teamArr.push(intern);
 
-      console.log(teamArr)
-
       addEmployee()
     })
   }
@@ -154,7 +151,7 @@ function init() {
   function createTeam() {
     const htmlPage = generateHTML(teamArr)
 
-    fs.writeFile("./team.html", htmlPage, (err) => {
+    fs.writeFile("./index.html", htmlPage, (err) => {
       err?console.error(err):console.log("Your team has been created!")
       
     })
